@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,19 +9,43 @@
     <script src="js/vue.js"></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <div id="app">
-        <section class="produtos">
-            <div v-for="produto in produtos" :key="produto.id" class="produto">
+        <div class="modal" v-if="produto">
+            <div class="modal_container">
+                <div class="modal_img">
+                    <img :src="produto.img" :alt="produto.nome"></img>
+                    <div class="modal_preco">
+                        <span>{{produto.preco | numeroPreco}}</span>
+                        <h2 class="modal_titulo">{{produto.nome}}</h2>
+                        <p>{{produto.descricao}}</p>
+                        <button class="modal_btn">Adicionar Item</button>
+                    </div>
+                    <div class="avaliacoes">
+                        <h2 class="avaliacoes_subtitulo">Avaliações</h2>
+                        <ul>
+                            <li v-for="avaliacao in produto.avaliacoes" class="avaliacao">
+                                <p class="avaliacao_descricao">{{avaliacao.descricao}}</p>
+                                <p class="avaliacao_usuario">{{avaliacao.nome}} | {{avaliacao.estrelas}}</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
 
-                <img :src="produto.img" :alt="produto.nome" class="produto_img">
+            </div>
+        </div>
+        <section class="produtos">
+            <div v-for="item in produtos" @click="fetchProduto(item.id)" :key="item.id" class="produto">
+                <img :src="item.img" :alt="item.nome" class="produto_img">
                 <div class="produto_info">
-                <span class="produto_preco">{{produto.preco}}</span>
-                <h2 class="produto_nome">{{produto.nome}}</h2>
+                    <span class="produto_preco">{{item.preco | numeroPreco}}</span>
+                    <h2 class="produto_nome">{{item.nome}}</h2>
                 </div>
             </div>
         </section>
     </div>
     <script src="js/app.js"></script>
 </body>
+
 </html>
