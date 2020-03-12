@@ -75,7 +75,33 @@ body {
 }
 
 .modal_container {
+    display: grid;
     position: relative;
     z-index: 1;
-    background: #FFFFFF;
+    background: linear-gradient(to right, transparent 20%, #FFF 20%);
+    align-items: end;
+    grid-gap: 20px;
+    padding: 0 50px 50px 0;
+}
+
+.modal_img {
+    margin-top: 50px;
+    box-shadow: 0 3px 4px rgba(0,0,0,0.1), 0 4px 10px rgba(0,0,0,.5) ;
+}
+
+.modal_img img {
+    max-width: 300px;
+    display: block;
+}
+
+.modal_dados {
+    grid-column: 2;
+}
+
+.modal_preco {
+    max-width: 600px;
+}
+
+.avaliacoes {
+    grid-column: 2;
 }
