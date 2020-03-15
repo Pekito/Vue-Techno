@@ -1,7 +1,7 @@
 * {
     box-sizing: border-box;
 }
-body, h1, h2, ul, li {
+body, h1, h2, ul, li, p {
     padding: 0;
     margin: 0;
 }
@@ -79,10 +79,10 @@ body {
     background: linear-gradient(to right, transparent 20%, #FFF 20%);
     align-items: end;
     grid-gap: 20px;
-    padding: 0 50px 50px 0;
+    padding: 50px 50px 50px 0;
+    animation: fadeIn .3s forwards;
 }
 .modal_img {
-    margin-top: 50px;
     box-shadow: 0 3px 4px rgba(0,0,0,0.1), 0 4px 10px rgba(0,0,0,.5) ;
 }
 .modal_img img {
@@ -91,12 +91,66 @@ body {
 }
 .modal_dados {
     grid-column: 2;
-}
-
-.modal_preco {
     max-width: 600px;
 }
 
+.modal_titulo {
+    font-size: 3rem;
+}
+.modal_btn {
+    margin-top: 80px;
+    background: #000000;
+    cursor: pointer;
+    color: #FFFFFF;
+    border: none;
+    font-size: 1rem;
+    padding: 10px 25px;
+    font-family: 'Noto Serif', serif;
+}
+.modal_btn:active {
+    background: #808080;
+}
+.modal_fechar {
+    position: absolute;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    top: 20px;
+    right: 10px;
+    cursor: pointer;
+}
+/* Avaliações*/
+
 .avaliacoes {
     grid-column: 2;
+}
+
+.avaliacao {
+    border-bottom: 1px solid rgba(0,0,0,.3);
+    padding-bottom: 20px;
+}
+
+.avaliacoes_subtitulo {
+    font-size: 2.5rem;
+}
+.avaliacao_descricao {
+    color: rgba(0,0,0,.7);
+    margin: 20px 0 5px 0;
+}
+
+.avaliacao_usuario {
+    font-weight: bold;
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate3d(-500px, 50px,0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0px);
+    }
 }
