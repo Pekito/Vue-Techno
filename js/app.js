@@ -3,6 +3,7 @@ const vm = new Vue({
     data: {
         produtos: [],
         produto: '',
+        carrinho: []
     },
     filters: {
         numeroPreco(valor) {
@@ -21,7 +22,7 @@ const vm = new Vue({
             })
         },
         fecharModal({target, currentTarget}) {
-            this.produto = currentTarget === target ? false : true;
+            this.produto = target === currentTarget ? false : this.produto;
         },
         fetchProdutos() {
             fetch("./api/produtos.json")
@@ -32,9 +33,26 @@ const vm = new Vue({
             fetch(`./api/produtos/${id}/dados.json`)
             .then(res => res.json())
             .then(data => this.produto = data)
+        },
+        adicionarItem() {
+            this.produto.estoque--;
+            const {id, nome, preco} = this.produto
+            this.carrinho.push({
+                id, nome, preco
+            });
+        },
+        removerItem(index) {
+            this.carrinho.splice(0,)
         }
     },
     created() {
         this.fetchProdutos();
+    },
+    computed: {
+        carrinhoTotal() {
+            let total = 0;
+            this.carrinho.forEach((el) => total += el.preco);
+            return total;
+        }
     }
 });

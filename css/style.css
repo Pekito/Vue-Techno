@@ -107,6 +107,9 @@ body {
     padding: 10px 25px;
     font-family: 'Noto Serif', serif;
 }
+.esgotado {
+    background: #808080;
+}
 .modal_btn:active {
     background: #808080;
 }
@@ -153,4 +156,32 @@ body {
         opacity: 1;
         transform: translate3d(0px);
     }
+}
+
+/*Header*/
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    max-width: 900px;
+    margin: 20px auto;
+}
+
+.logo {
+    width: 80px;
+}
+
+.carrinho_menu::after {
+    content: "";
+    display: inline-block;
+    background: url('/assets/carrinho.svg');
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.carrinho_menu {
+    display: flex;
+    align-items: center;
 }
