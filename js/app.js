@@ -43,10 +43,14 @@ const vm = new Vue({
         },
         removerItem(index) {
             this.carrinho.splice(0,)
+        },
+        checarLocalStorage() {
+            if (window.localStorage.carrinho) this.carrinho = JSON.parse(window.localStorage.carrinho);
         }
     },
     created() {
         this.fetchProdutos();
+        this.checarLocalStorage();
     },
     computed: {
         carrinhoTotal() {
@@ -54,5 +58,10 @@ const vm = new Vue({
             this.carrinho.forEach((el) => total += el.preco);
             return total;
         }
+    },
+    watch: {
+        carrinho() {
+            window.localStorage.carrinho = JSON.stringify(this.carrinho);
+        },
     }
 });
