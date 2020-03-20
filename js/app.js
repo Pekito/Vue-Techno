@@ -5,7 +5,8 @@ const vm = new Vue({
         produto: '',
         carrinho: [],
         mensagemAlerta: 'item Adicionado',
-        alertaAtivo: false
+        alertaAtivo: false,
+        carrinhoAtivo: false
     },
     filters: {
         numeroPreco(valor) {
@@ -26,6 +27,10 @@ const vm = new Vue({
         fecharModal({target, currentTarget}) {
             this.produto = target === currentTarget ? false : this.produto;
         },
+        fecharModalCarrinho({target, currentTarget}) {
+            this.carrinhoAtivo = target === currentTarget ? false : this.carrinhoAtivo;
+
+        },
         fetchProdutos() {
             fetch("./api/produtos.json")
             .then(res => res.json())
@@ -45,7 +50,8 @@ const vm = new Vue({
             this.alerta(`${nome} foi adicionado ao carrinho`)
         },
         removerItem(index) {
-            this.carrinho.splice(0,)
+            this.carrinho.splice(index,1)
+            this.alerta('Item removido do Carrinho')
         },
         checarLocalStorage() {
             if (window.localStorage.carrinho) this.carrinho = JSON.parse(window.localStorage.carrinho);
@@ -60,7 +66,7 @@ const vm = new Vue({
             if (hash) {
                 this.fetchProduto(hash);
             }
-        }
+        },
     },
     created() {
         this.fetchProdutos();

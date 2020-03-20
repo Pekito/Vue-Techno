@@ -51,7 +51,7 @@ body {
 
 /* Modal */
 
-.modal::before {
+.modal::before,.carrinho_modal::before {
     content: "";
     position: fixed;
     background: rgba(0,0,0,.5);
@@ -61,7 +61,7 @@ body {
     height: 100vh;
 
 }
-.modal {
+.modal{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -113,7 +113,7 @@ body {
 .modal_btn:active {
     background: #808080;
 }
-.modal_fechar {
+.modal_fechar, .carrinho_fechar {
     position: absolute;
     border-radius: 50%;
     width: 40px;
@@ -188,7 +188,7 @@ body {
 /*Alerta*/
 
 .alerta {
-    position: absolute;
+    position: fixed;
     top: 20px;
     left: 0;
     z-index: 10;
@@ -217,4 +217,71 @@ body {
     padding: 20px 40px;
     border: 2px solid #000000;
     box-shadow: 0 3px 4px rgba(0,0,0,.1), 0 4px 10px rgba(0,0,0,.8)
+}
+
+/*Carrinho Modal*/
+.carrinho_modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 80px;
+    display: none;
+    font-family: 'Noto Serif';
+}
+.carrinho_modal.ativo {
+    display: block
+}
+
+.carrinho_container {
+    position: relative;
+    margin: 80px auto;
+    background: #FFFFFF;
+    padding: 40px;
+    max-width: 800px;
+    animation: fadeInDown .3s forwards
+}
+
+.carrinho_item {
+    display: grid;
+    grid-template-columns: 1fr 1fr 50px;
+    border-bottom: 1px solid #252525;
+    margin-bottom: 20px
+}
+.carrinho_titulo {
+    margin-bottom: 20px;
+    border-bottom: solid 2px #000000;
+    padding-bottom: 20px;
+}
+
+.carrinho_remover {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.carrinho_preco {
+    text-align: right;
+}
+
+.carrinho_total {
+    text-align: right;
+    padding: 10px 50px 10px 0;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #000000;
+}
+
+.carrinho_finalizar {
+    display: block;
+    margin-left: auto;
+    background: #000000;
+    cursor: pointer;
+    color: #FFFFFF;
+    font-size: 1rem;
+    padding: 10px 25px;
+    border: none;
 }
