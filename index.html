@@ -28,8 +28,8 @@
                         <h2 class="modal_titulo">{{produto.nome}}</h2>
                         <p>{{produto.descricao}}</p>
                         <p>{{produto.estoque}}</p>
-                        <button v-if="produto.estoque > 0" @click="adicionarItem" class="modal_btn">Adicionar Item</button>
-                        <button v-else @click="adicionarItem" class="modal_btn esgotado" disabled>Produto Esgotado</button>
+                        <p class="align"><button v-if="produto.estoque > 0" @click="adicionarItem" class="modal_btn">Adicionar Item</button></p>
+                        <p class="align"><button v-else @click="adicionarItem" class="modal_btn esgotado" disabled>Produto Esgotado</button></p>
                     </div>
                 </div>
                     <div class="avaliacoes">
